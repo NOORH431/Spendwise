@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise Dashboard</title>
+  
+  <!-- Corrected Google Fonts Integration -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Link to External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="dashboard">
+  <!-- 1. SIDEBAR NAVIGATION PANEL -->
+  <aside class="sidebar">
+    <div class="logo">SpendWise</div>
+    <nav class="nav-links">
+      <a href="#" class="nav-item active">Dashboard</a>
+      <a href="#" class="nav-item">Analytics</a>
+      <a href="#" class="nav-item">Expenses</a>
+      <a href="#" class="nav-item">Budgets</a>
+      <a href="#" class="nav-item">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- 2. MAIN WORKSPACE WRAPPER -->
+  <div class="main-content">
+    
+    <!-- Top Header Component -->
+    <header class="header">
+      <h1 class="header-title">Financial Overview</h1>
+      <div class="user-profile">
+        <span class="user-name">Noor Hassan</span>
+        <div class="avatar" aria-hidden="true">NH</div>
+      </div>
+    </header>
+
+    <!-- MISSING PARAMETER 1: DYNAMIC SYSTEM BUDGET ALERT STATUS BANNER -->
+    <div id="status-alert-display" class="alert-neutral" style="margin: 0 2rem 1.5rem 2rem; padding: 1rem; border-radius: 8px; font-weight: 600; text-align: center; background-color: #1e293b; color: #94a3b8; border-left: 5px solid #64748b;">
+      Set a monthly budget target limit to start active monitoring tracking logs.
+    </div>
+
+    <!-- 3. THE SIX CARDS GRID -->
+    <main class="dashboard-grid">
+      
+      <!-- Card 1: Food -->
+      <div class="card" tabindex="0">
+        <div class="card-header">
+          <span class="card-icon"></span>
+          <span class="card-tag">Monthly</span>
+        </div>
+        <h2 class="card-title">Food & Dining</h2>
+        <div class="metric">KES <span id="food-total">0</span></div>
+        <p id="food-status" class="card-status text-neutral">No expenses recorded</p>
+      </div>
+
+      <!-- Card 2: Transport -->
+      <div class="card" tabindex="0">
+        <div class="card-header">
+          <span class="card-icon"></span>
+          <span class="card-tag">Monthly</span>
+        </div>
+        <h2 class="card-title">Transport</h2>
+        <div class="metric">KES <span id="transport-total">0</span></div>
+        <p id="transport-status" class="card-status text-neutral">Remaining KES 0</p>
+      </div>
+
+      <!-- Card 3: Rent -->
+      <div class="card" tabindex="0">
+        <div class="card-header">
+          <span class="card-icon"></span>
+          <span class="card-tag">Fixed</span>
+        </div>
+        <h2 class="card-title">Rent & Housing</h2>
+        <div class="metric">KES <span id="rent-total">0</span></div>
+        <p id="rent-status" class="card-status text-neutral">Remaining KES 0</p>
+      </div>
+
+      <!-- Card 4: Entertainment -->
+      <div class="card" tabindex="0">
+        <div class="card-header">
+          <span class="card-icon"></span>
+          <span class="card-tag">Leisure</span>
+        </div>
+        <h2 class="card-title">Entertainment</h2>
+        <div class="metric">KES <span id="entertainment-total">0</span></div>
+        <p id="entertainment-status" class="card-status text-neutral">Remaining KES 0</p>
+      </div>
+
+      <!-- Card 5: Savings -->
+      <div class="card" tabindex="0">
+        <div class="card-header">
+          <span class="card-icon"></span>
+          <span class="card-tag">Goal</span>
+        </div>
+        <h2 class="card-title">Savings</h2>
+        <div class="metric">KES <span id="savings-total">0</span></div>
+        <p id="savings-status" class="card-status text-neutral">Goal 0% reached</p>
+      </div>
+
+      <!-- Card 6: Utilities -->
+      <div class="card" tabindex="0">
+        <div class="card-header">
+          <span class="card-icon"></span>
+          <span class="card-tag">Fixed</span>
+        </div>
+        <h2 class="card-title">Utilities</h2>
+        <div class="metric">KES <span id="utilities-total">0</span></div>
+        <p id="utilities-status" class="card-status text-neutral">Due in 0 days</p>
+      </div>
+
+    </main>
+
+    <!-- MISSING PARAMETER 2: INTERACTIVE DATA ENTRY WORKSPACE PANELS -->
+    <section class="forms-workspace-layout" style="margin: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        
+        <!-- Budget Form Block -->
+        <div class="form-container" style="background: #0550f1; padding: 1.5rem; border-radius: 12px; border: 1px solid #013e94;">
+            <h3 style="color: #11e7f6; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;">Define Monthly Limit Target</h3>
+            <form id="budget-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="number" id="budget-amount" placeholder="Enter Total Budget (KES)" required min="1" style="padding: 0.75rem; border-radius: 6px; border: 1px solid #15c5f6; background: #03f945; color: #050000; outline: none;">
+                <button type="submit" style="padding: 0.75rem; background: #f7f8fa; color: rgba(0, 9, 12, 0.416); border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Set Total Budget</button>
+            </form>
+        </div>
+
+        <!-- Expense Log Form Block -->
+        <div class="form-container" style="background: #04fc25; padding: 1.5rem; border-radius: 12px; border: 1px solid #0164ef;">
+            <h3 style="color: #09798d; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;">Log New Transaction Entry</h3>
+            <form id="expense-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="text" id="expense-name" placeholder="Item details / Description" required style="padding: 0.75rem; border-radius: 6px; border: 1px solid #374151; background: #1f2937; color: #fff; outline: none;">
+                <input type="number" id="expense-amount" placeholder="Amount (KES)" required min="1" style="padding: 0.75rem; border-radius: 6px; border: 1px solid #374151; background: #1f2937; color: #fff; outline: none;">
+                <select id="expense-category" required style="padding: 0.75rem; border-radius: 6px; border: 1px solid #374151; background: #1f2937; color: #fff; outline: none;">
+                    <option value="Food">Food & Dining</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Rent">Rent & Housing</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Utilities">Utilities</option>
+                </select>
+                <button type="submit" style="padding: 0.75rem; background: #04000a; color: rgb(250, 2, 2); border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Commit Transaction</button>
+            </form>
+        </div>
+
+    </section>
+
+  </div> <!-- Closes div.main-content -->
+</div> <!-- Closes your dashboard wrapper -->
+
+  <!-- Script accurately linked before closing body node layout -->
+  <script src="script.js"></script>
+</body>
+</html>
